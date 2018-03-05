@@ -1,0 +1,9 @@
+-- 
+INSERT INTO [SK_F2_FLUSSI].[F2_D_TabelleDominio]
+           ([Tabella]
+           ,[Campo_Rif]
+           ,[Campo_Output])
+     VALUES
+           ('SK_F2.F2_D_Tipi_Derivato'
+           ,'ID'
+           ,'TIP_DER') 

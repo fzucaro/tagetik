@@ -1,0 +1,29 @@
+ SELECT		op.ID, 
+						op.ID_Tipo_Operazione, 
+						tipop.Descrizione,
+						op.ID_Persona, 
+						p.SNDG, 
+						p.ID_SAE, 
+						p.ID_RAE, 
+						p.Partita_IVA, 
+						p.Codice_Fiscale, 
+						op.ID_Stato_Operazione, 
+						p.GUID_Persona, 
+						ISNULL(op.Data_Fine, '31/12/9999')
+    FROM SK_F2.F2_T_Operazioni op, 
+	SK_F2.F2_T_Persona p, sk_f2.f2_t_classificazioni_contabili cc,
+	SK_F2.F2_D_Tipi_Operazioni tipop
+   WHERE -- considero tutte le tipologie di operazioni
+    op.ID_Tipo_Operazione = tipop.ID
+     AND p.ID = op.ID_Persona
+     AND p.Data_Fine IS NULL 
+     AND cc.ID_Operazione = op.ID
+     AND '22/02/2018' between convert(date, cc.data_inizio) and convert(date, isnull(cc.data_fine, '31/12/9999'))
+	 AND cc.Codice_Mappa_Gruppo is not null
+	 -- se tipooperazione è filiale estera non considero il filtro su metodo di consolidamento
+	 AND (cc.ID_Metodo_Consolidamento_IAS is not null OR  op.ID_Tipo_Operazione in ('FE') )
+     --AND cc.ID_Metodo_Consolidamento_IAS in ('CI', 'PN', 'PR')
+     AND ( (op.ID_Stato_Operazione = 1 AND op.Data_Inizio <= '22/02/2018')
+	 OR (op.ID_Stato_Operazione = 2 and convert(date, op.data_fine) > '31/12/2017'))
+	 AND (op.Cancellata = 0 OR op.Cancellata IS NULL)
+	 AND (cc.Cancellata = 0 OR cc.Cancellata IS NULL)

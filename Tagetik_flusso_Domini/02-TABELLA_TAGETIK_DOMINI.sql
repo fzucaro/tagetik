@@ -1,0 +1,45 @@
+USE [PART0]
+GO
+
+/****** Object:  Table [SK_F2_FLUSSI].[F2_T_EXP_TAGETIK_DOMINI]    Script Date: 07/12/2017 15:48:06 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+SET ANSI_PADDING ON
+GO
+
+/*
+Se tabella esiste la droppo
+
+*/
+IF (EXISTS (SELECT * 
+                 FROM INFORMATION_SCHEMA.TABLES 
+                 WHERE TABLE_SCHEMA = 'SK_F2_FLUSSI' 
+                 AND  TABLE_NAME = 'F2_T_EXP_TAGETIK_DOMINI'))
+BEGIN
+    DROP  TABLE SK_F2_FLUSSI.F2_T_EXP_TAGETIK_DOMINI
+END
+
+USE [PART0]
+GO
+
+
+CREATE TABLE [SK_F2_FLUSSI].[F2_T_EXP_TAGETIK_DOMINI](
+	[Data_estrazione] [date] NOT NULL,
+	[Nome_Dominio] [nvarchar](10) NOT NULL,
+	[Codice] [nvarchar](10) NOT NULL,
+	[Descrizione] [nvarchar](250) NOT NULL,
+	[Flag_Scarto] [bit] NOT NULL,
+	[Motivo_Scarto] [nvarchar](2000) NULL,
+ CONSTRAINT [PK_F2_T_EXP_TAGETIK_DOMINI] PRIMARY KEY CLUSTERED 
+(
+	[Data_estrazione] ASC,
+	[Nome_Dominio] ASC,
+	[Codice] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, FILLFACTOR = 100) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+

@@ -1,0 +1,2 @@
+05181;PILLARSTONE ITALY HOLDING S.p.A. - BURGO;;AFV;CST;AFV;CST;2;Holding Operative;2N;ALT;A00I;EUR;N;N;N;;;;;;;N;;;;;;;;;;00;7;01;;024;N;L3;;;20160322;17.200;0.000;20160322;        ;        ;;;AFS;05181;SFP;Strumento Finanziario Partecipativo;;;N;20171231
+05182;PILLARSTONE ITALY HOLDING S.p.A. - LEDIBERG;;AFV;CST;AFV;CST;2;Holding Operative;2N;ALT;A00I;EUR;N;N;N;;;;;;;N;;;;;;;;;;00;7;02;;029;N;L3;;;20160322;32.600;0.000;20160322;        ;        ;;;AFS;05182;SFP;Strumento Finanziario Partecipativo;;;N;20171231
