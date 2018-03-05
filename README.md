@@ -1,4 +1,4 @@
-tagetik
+Tagetik
 =======
 
 Repository flussi tagetik
@@ -20,4 +20,9 @@ Repository flussi tagetik
 
             -   HEAD
 
-        -   Aggiungere a Index: git add nomefile
+        -   Salvare modifiche in Index: git add nomefile
+
+        -   Salvare modifiche in HEAD (locale): git commit -m “Messaggio”
+
+        -   Salvare modifiche in repository remoto: git push origin master
+            (master o branch sul remoto)
