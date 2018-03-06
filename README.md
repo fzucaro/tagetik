@@ -26,3 +26,14 @@ Repository flussi tagetik
 
         -   Salvare modifiche in repository remoto: git push origin master
             (master o branch sul remoto)
+
+         
+
+Creazione Branch
+================
+
+-   Creo branch per release flusso movimenti: git checkout -b tgtk_mov01
+
+###  
+
+Conoscere current branch: git branch
