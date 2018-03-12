@@ -15,11 +15,8 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE PROCEDURE [SK_F2_FLUSSI].[F2_EXP_TAGETIK_Anag]
-<<<<<<< HEAD
     @dataEstrazione date, @outputNum int OUTPUT, @outputMsg nvarchar(500) OUTPUT
-=======
-@dataEstrazione date, @outputNum int OUTPUT, @outputMsg nvarchar(500) OUTPUT
->>>>>>> tgtk_anag01
+
 WITH EXEC AS CALLER
 AS
 BEGIN
@@ -215,13 +212,9 @@ BEGIN
      AND @dataEstrazione between convert(date, cc.data_inizio) and convert(date, isnull(cc.data_fine, '31/12/9999'))
 	 AND cc.Codice_Mappa_Gruppo is not null
 	 -- se tipooperazione è filiale estera non considero il filtro su metodo di consolidamento
-<<<<<<< HEAD
 	 -- AND (cc.ID_Metodo_Consolidamento_IAS is not null OR  op.ID_Tipo_Operazione in ('FE','IMP') )
 	 -- eliminato filtro su tipo operazioni, prendo solo id_metodo consolidamento ias non nullo
 	 AND cc.ID_Metodo_Consolidamento_IAS is not null 
-=======
-	 AND (cc.ID_Metodo_Consolidamento_IAS is not null OR  op.ID_Tipo_Operazione in ('FE','IMP') )
->>>>>>> tgtk_anag01
      --AND cc.ID_Metodo_Consolidamento_IAS in ('CI', 'PN', 'PR')
      AND ( (op.ID_Stato_Operazione = 1 AND op.Data_Inizio <= @dataEstrazione)
 	 OR (op.ID_Stato_Operazione = 2 and convert(date, op.data_fine) > @dataPeriodoPrec))
