@@ -214,7 +214,7 @@ BEGIN
 	 -- se tipooperazione è filiale estera non considero il filtro su metodo di consolidamento
 	 -- AND (cc.ID_Metodo_Consolidamento_IAS is not null OR  op.ID_Tipo_Operazione in ('FE','IMP') )
 	 -- eliminato filtro su tipo operazioni, prendo solo id_metodo consolidamento ias non nullo
-	 AND cc.ID_Metodo_Consolidamento_IAS is not null 
+	 --AND cc.ID_Metodo_Consolidamento_IAS is not null 
      --AND cc.ID_Metodo_Consolidamento_IAS in ('CI', 'PN', 'PR')
      AND ( (op.ID_Stato_Operazione = 1 AND op.Data_Inizio <= @dataEstrazione)
 	 OR (op.ID_Stato_Operazione = 2 and convert(date, op.data_fine) > @dataPeriodoPrec))
@@ -1231,7 +1231,8 @@ IF @spaziaturaFissa = 1
 BEGIN
     SELECT * INTO #tempTAGETIKFAnagFISSA FROM (
 			SELECT '00000' as Azienda, 0 as TipoRec, 
-			'DET6NAME;LDESCI;ZDSEDE;METODO;AREAB;AREAG;AREAR;FLAGAT;ZATTIV;CONTRO;RESID;CURNCY' +
+			'DET6NAME;LDESCI;ZDSEDE;
+			 METODO;AREAB;AREAG;AREAR;FLAGAT;ZATTIV;CONTRO;RESID;CURNCY' +
   		    ';QUOT;GRUPPO;ZABI;ZCODIVA;ZFISCOD;ZCCECOD;ZCODER;ZNSG;SIM;RIP011;RIP11C;RIP11R;RIP016' +
 			';RIP016C;RIP016R;RIP200;RIP250;RIP911;RAGGR;CATEG;CARATT;SUBHO;METVAR;FVL' +
 			';SISIN;ATECO;INBANKIT;PERC;PERCDV;DTINICC;DTFINECC;DTCOST;CODLEI;SEDEAM;CLIAS;CODPR;
@@ -1272,32 +1273,67 @@ BEGIN
 END	
 ELSE -- spaziatura NON fissa 
 BEGIN
+
+	-- HEADER
+	-- 
+
+
 	SELECT * INTO #tempTAGETIKFAnag FROM (
-    SELECT Azienda, 1 as TipoRec, Azienda + ';' +  Ragione_sociale + ';' + Sede + ';' + Metodo + ';' + Metodo_consolidamento_BI + ';' + Metodo_consolidamento_IAS + ';' + 
-           Metodo_consolidamento_Finrep + ';' + Classificazione_BI + ';' + Descrizione_attivita + ';' 
-		   -- + Quotata
-            + ';' + Tipo_rapporto_effettivo + ';' + Residenza + ';' + Valuta + ';' + Tipo_quotazione + ';' + Gruppo_bancario
-           -- Modalita_partecipazione 
-		   + ';' + ABI + ';' + Partita_IVA + ';' + Codice_fiscale + ';' + Codice_UIC + ';' + Codice_CR + ';' + 
-           SNDG + ';' + Settore_ISVAP + ';' + Tipo_controparte + ';' + Tipo_controparteC + ';' + Tipo_controparteR + ';' + 
-           Area_geografica + ';' + Area_geograficaC + ';' + Area_geograficaR + ';' + Affidato_garante + ';' + 
-           Attivita_economica + ';' + SAE + ';' + Tipo_raggruppamento + ';' + Categoria_controparte + ';' + 
-           Caratt_partecipazione + ';' + Subholding + ';' +
-		   Variazione_metodo + ';' + 
-           Livello_fair_value + ';' + ISIN_prevalente + ';' + ATECO + ';' + Data_ingresso_BI + ';' + Perc_possesso_gruppo + ';' + 
-           Perc_possesso_DV_gruppo  + ';' + dt_inizio_class_contabile
-					+ ';' + dt_fine_class_contabile
-					+ ';' + dt_costituzione
-					+ ';' + cod_LEI
-					+ ';' + sede_amm
-					+ ';' + class_IAS
-					+ ';' + cod_prevalente
-					+ ';' + tipo_op
-					+ ';' + des_op
-					+ ';' + tipo_derivato
-					+ ';' + id_tipologia_fondo
-					+ ';' + convert(nvarchar,Data_estrazione,112)
-					 as record
+    SELECT Azienda, 1 as TipoRec, 
+			Azienda 
+			+ ';' +  Ragione_sociale 
+			+ ';' + Sede 
+			+ ';' + Metodo 
+			+ ';' + Metodo_consolidamento_BI 
+			+ ';' + Metodo_consolidamento_IAS 
+			+ ';' + Metodo_consolidamento_Finrep 
+			+ ';' + Classificazione_BI 
+			+ ';' + Descrizione_attivita 
+            + ';' + Tipo_rapporto_effettivo 
+			+ ';' + Residenza 
+			+ ';' + Valuta 
+			+ ';' + Tipo_quotazione 
+			+ ';' + Gruppo_bancario
+			+ ';' + ABI 
+			+ ';' + Partita_IVA 
+			+ ';' + Codice_fiscale 
+			+ ';' + Codice_UIC 
+			+ ';' + Codice_CR 
+			+ ';' + SNDG 
+			+ ';' + Settore_ISVAP 
+			+ ';' + Tipo_controparte 
+			+ ';' + Tipo_controparteC 
+			+ ';' + Tipo_controparteR 
+			+ ';' + Area_geografica 
+			+ ';' + Area_geograficaC 
+			+ ';' + Area_geograficaR 
+			+ ';' + Affidato_garante 
+			+ ';' + Attivita_economica 
+			+ ';' + SAE 
+			+ ';' + Tipo_raggruppamento 
+			+ ';' + Categoria_controparte 
+			+ ';' +  Caratt_partecipazione 
+			+ ';' + Subholding 
+			+ ';' + Variazione_metodo 
+			+ ';' + Livello_fair_value 
+			+ ';' + ISIN_prevalente 
+			+ ';' + ATECO 
+			+ ';' + Data_ingresso_BI 
+			+ ';' + Perc_possesso_gruppo 
+			+ ';' + Perc_possesso_DV_gruppo  
+			+ ';' + dt_inizio_class_contabile
+			+ ';' + dt_fine_class_contabile
+			+ ';' + dt_costituzione
+			+ ';' + cod_LEI
+			+ ';' + sede_amm
+			+ ';' + class_IAS
+			+ ';' + cod_prevalente
+			+ ';' + tipo_op
+			+ ';' + des_op
+			+ ';' + tipo_derivato
+			+ ';' + id_tipologia_fondo
+			+ ';' + convert(nvarchar,Data_estrazione,112)
+			as record
       FROM [SK_F2_FLUSSI].[F2_T_EXP_TAGETIK_Anag]
      WHERE Data_estrazione = @dataEstrazione
        AND Flag_Scarto = 0
