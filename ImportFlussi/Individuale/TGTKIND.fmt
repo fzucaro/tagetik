@@ -1,0 +1,12 @@
+11.0
+9
+1 	SQLCHAR 0       0      ";"   2     periodo_contabile_D_DP		SQL_Latin1_General_CP1_CI_AS
+2 	SQLCHAR 0       0      ";"   3     data_caricamento_DC   		SQL_Latin1_General_CP1_CI_AS
+3 	SQLCHAR 0       0      ";"   4     sndg_part             		SQL_Latin1_General_CP1_CI_AS
+4 	SQLCHAR 0       0      ";"   5     sndg_partn            		SQL_Latin1_General_CP1_CI_AS
+5 	SQLCHAR 0       0      ";"   6     P_PN_CI						SQL_Latin1_General_CP1_CI_AS
+6 	SQLCHAR 0       0      ";"   7     P_AFS           	   			SQL_Latin1_General_CP1_CI_AS
+7 	SQLCHAR 0       0      ";"   8     CNS_PN_CI           			SQL_Latin1_General_CP1_CI_AS
+8 	SQLCHAR 0       0      ";"   9     CNS_AFS           	   		SQL_Latin1_General_CP1_CI_AS
+9 	SQLCHAR 0       0      ";"   10    CNS_INDV            			SQL_Latin1_General_CP1_CI_AS
+

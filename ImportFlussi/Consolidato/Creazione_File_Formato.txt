@@ -1,0 +1,16 @@
+C:\Users\U0j2498>bcp PART0.SK_F2_BULK.F2_IMP_BIL_CONS_TAGETIK format nul -T -N -f tagetik_import_bilancio-n.fmt  -S"SCAPSES0063.syssede.systest.sanpaoloimi.com\SCD017,1602"
+
+format nul non specifica file di dati
+-n specifica i tipi di dato in fromato nativo
+(-c dati tipo carattere
+ -N dati nativi UNICODE
+
+)
+-f nome file
+
+
+Comando Import data
+bcp PART0.SK_F2_BULK.F2_IMP_BIL_CONS_TAGETIK IN cons_data.txt -f TGTKCONS.fmt -T   -S"SCAPSES0063.syssede.systest.sanpaoloimi.com\SCD017,1602"
+
+Comando per importare file di testo
+C:\Users\U0j2498>bcp PART0.SK_F2_BULK.F2_IMP_BIL_CONS_TAGETIK IN cons_data.txt -f TGTKCONS.fmt -T   -S"SCAPSES0063.syssede.systest.sanpaoloimi.com\SCD017,1602"
