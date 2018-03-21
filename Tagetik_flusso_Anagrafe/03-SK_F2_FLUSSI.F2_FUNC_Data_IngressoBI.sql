@@ -41,7 +41,7 @@ SET @funcCursor = CURSOR for
  SELECT  cla.ID_Metodo_Consolidamento_Banca_Italia,			
          Data_Inizio DataInizioClassCont
       FROM SK_F2.F2_T_Classificazioni_Contabili cla
-     WHERE ID_Operazione = 2976
+     WHERE ID_Operazione = @idOperazione
            AND (Cancellata = 0 or Cancellata is null)
 	   order by Data_Inizio desc;
 OPEN @funcCursor;
