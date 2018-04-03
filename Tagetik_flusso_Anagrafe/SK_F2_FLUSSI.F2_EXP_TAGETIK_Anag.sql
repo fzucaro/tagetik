@@ -169,27 +169,7 @@ BEGIN
   --print 'Data date [' + convert(varchar,@dataPeriodoPrec) + ']'
   
   DECLARE Operazioni_CUR CURSOR FOR
-  /* SELECT	op.ID, 
-					op.ID_Tipo_Operazione, 
-					tipop.Descrizione,
-					op.ID_Persona, 
-					p.SNDG, 
-					p.ID_SAE, 
-					p.ID_RAE, 
-					p.Partita_IVA, 
-					p.Codice_Fiscale, 
-					op.ID_Stato_Operazione, 
-					p.GUID_Persona, 
-					ISNULL(op.Data_Fine, '31/12/9999')
-    FROM SK_F2.F2_T_Operazioni op, SK_F2.F2_T_Persona p,SK_F2.F2_D_Tipi_Operazioni tipop
-   WHERE op.ID_Tipo_Operazione in ('P', 'FE', 'SFP') -- Tutte le partecipazioni, filiali estere, Strumenti Finanziari Partecipativi
-	   AND op.ID_Tipo_Operazione = tipop.ID
-     AND p.ID = op.ID_Persona
-     AND p.Data_Fine IS NULL 
-     AND ((op.ID_Stato_Operazione = 1 AND op.Data_Inizio <= @dataEstrazione) OR (op.ID_Stato_Operazione = 2 and convert(date, op.data_fine) > @dataPeriodoPrec))
-	   AND (op.Cancellata = 0 OR op.Cancellata IS NULL)
-  UNION ALL*/
-  SELECT		op.ID, 
+  SELECT DISTINCT		op.ID, 
 						op.ID_Tipo_Operazione, 
 						tipop.Descrizione,
 						op.ID_Persona, 
@@ -209,7 +189,7 @@ BEGIN
      AND p.ID = op.ID_Persona
      AND p.Data_Fine IS NULL 
      AND cc.ID_Operazione = op.ID
-     AND @dataEstrazione between convert(date, cc.data_inizio) and convert(date, isnull(cc.data_fine, '31/12/9999'))
+     --AND @dataEstrazione between convert(date, cc.data_inizio) and convert(date, isnull(cc.data_fine, '31/12/9999'))
 	 AND cc.Codice_Mappa_Gruppo is not null
 	 -- se tipooperazione è filiale estera non considero il filtro su metodo di consolidamento
 	 -- AND (cc.ID_Metodo_Consolidamento_IAS is not null OR  op.ID_Tipo_Operazione in ('FE','IMP') )
