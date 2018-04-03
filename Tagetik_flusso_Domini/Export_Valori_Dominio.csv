@@ -1,0 +1,22 @@
+SK_F2_FLUSSI.F2_D_AreaGeograficaCR	ID_Area	RIP016	*	
+SK_F2_FLUSSI.F2_D_AreaGeograficaCR	ID_AreaC	RIP16C	*	
+SK_F2_FLUSSI.F2_D_TipoControparteCR	ID_Tipo	RIP011	*	
+SK_F2_FLUSSI.F2_D_TipoControparteCR	ID_TipoC	RIP11C	*	
+SK_F2.F2_D_Aree_Geografiche	ID	RIP16R	*	
+SK_F2.F2_D_Tipi_Controparte	ID	RIP11R	*	
+SK_F2.F2_D_Ateco	ID	ATECO	*	
+SK_F2.F2_D_Cash_Generating_Unit	ID	SUBSEG	X	eliminare
+SK_F2.F2_ANS_AFTATPR_SAE	PROF_ATTIVITA	RIP911	*	
+SK_F2.F2_D_Affidati_Garante	ID	RIP200	*	
+SK_F2.F2_D_Metodo_Consolidamento	ID	METODO	*	
+SK_F2.F2_D_Metodo_Consolidamento	ID	AREAB	*	
+SK_F2.F2_D_Metodo_Consolidamento	ID	AREAG	*	
+SK_F2.F2_D_Classificazione_Banca_Italia	ID	FLAGAT	*	
+SK_F2_FLUSSI.F2_D_Codifiche_BOF	Codice	CARATT	X	eliminare
+SK_F2_FLUSSI.F2_D_Codifiche_BOF	Codice	CATEG	X	eliminare
+SK_F2_FLUSSI.F2_D_Codifiche_BOF	Codice	RAGGR	X	eliminare
+SK_F2_FLUSSI.F2_D_Codifiche_BOF	Codice	RESID	X	eliminare
+SK_F2.F2_D_Classificazione_IAS	ID	CONTRO	X	eliminare
+SK_F2.F2_D_Tipi_Derivato	ID	TIPDER	A	aggiungere
+SK_F2.F2_D_Tipologie_Fondo	ID	TIPF	A	aggiungere
+SK_F2.F2_D_Valuta	Codice_Swift	CURCNCY	A	aggiungere
